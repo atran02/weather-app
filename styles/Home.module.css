@@ -19,6 +19,10 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer a {
@@ -27,6 +31,7 @@
   align-items: center;
   flex-grow: 1;
 }
+
 
 .title a {
   color: #0070f3;
