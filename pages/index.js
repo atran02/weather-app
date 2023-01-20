@@ -10,9 +10,11 @@ export default function Home() {
     const[location,setLocation]=useState('');
     const[weather,setWeather]=useState();
     const [erroMessage, setErrorMessage]= useState("");
+    const [main, setMain] = useState();
+    const [wind, setWind] = useState();
 
     var apiKey= "c416c519817cef6de85357d8101080bc";
-    var lang ="fr";
+    var lang ="en";
     var units ="metric";
     const url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`;
 
@@ -24,12 +26,16 @@ export default function Home() {
           setData(response.data)
           console.log(response.data)
           setWeather(response.data.weather)
+          setMain(response.data.main)
+          setWind(response.data.wind)
           setErrorMessage("")
         }).catch(err =>{
           console.log(err)
           setErrorMessage("Niceu try fam")
           setData({})
           setWeather()
+          setMain()
+          setWind()
         })
         setLocation('');
       }
@@ -62,7 +68,21 @@ export default function Home() {
             )
           })
         }
+        
+        {
+          main && <div>
+            <div>{main.temp}</div>
+            <div>{main.feels_like}</div>
+          </div>
+        }
 
+        {
+          wind && <div>
+            <div>{wind.gust ? wind.gust:wind.speed}</div>
+          </div>
+        }
+
+   
       </main>
 
       <footer className={styles.footer}>
