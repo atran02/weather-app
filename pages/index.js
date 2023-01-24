@@ -4,7 +4,15 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 
+import Lottie from "lottie-react";
+// import shiba1 from "./shiba1.json";
+
+import ShibaAn from '../comps/lottie';
+
+
 export default function Home() {
+  // const App = () => <Lottie animationData={shiba1} loop={true} />;
+
 
     const[data, setData]=useState({});
     const[location,setLocation]=useState('');
@@ -73,6 +81,7 @@ export default function Home() {
                 <div key={index}>
                     <div><h3>{w.main}</h3></div>
                     <div><p>{w.description}</p></div>
+                    
                 </div>
               )
             })
@@ -99,6 +108,17 @@ export default function Home() {
               </div>
             </div>
           }
+          
+{/* 
+          {
+            (()=>{
+              if(data.weather){
+                return <Lottie
+                  style={{width:200}}
+                />
+              }
+            })
+          } */}
 
         </div>}
       </main>
