@@ -17,3 +17,31 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.sInput{
+  border-radius: 20px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  padding: 1%;
+  margin: 1%;
+}
+
+.wCont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  height: fit-content;
+  border-radius: 20px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  padding: 5%;
+  margin: 5%;
+}
+
+.info{
+  color: rgb(10, 138, 158);
+}

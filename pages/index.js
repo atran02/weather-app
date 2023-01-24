@@ -31,7 +31,7 @@ export default function Home() {
           setErrorMessage("")
         }).catch(err =>{
           console.log(err)
-          setErrorMessage("Niceu try fam")
+          setErrorMessage("Oops! Please enter a city")
           setData({})
           setWeather()
           setMain()
@@ -48,41 +48,59 @@ export default function Home() {
         <link rel="icon" href="/monkey banana 56.png" />
       </Head>
 
+      <header className={styles.header}>
+        <Image src="/monkey banana 56.png" alt="monkey" width={56} height={56}  />
+        Weather App
+      </header>
+
       <main className={styles.main}>
         {erroMessage}
-        <input
+        <input className='sInput'
           value={location}
           onChange={event => setLocation(event.target.value)}
-          placeholder="enter location"
+          placeholder="enter a city..."
           onKeyDown={searchLocation}
           type="text"
         />
-        {data.name}
-        {
-          weather && weather.map((w,index)=>{
-            return(
-              <div key={index}>
-                  <div>{w.description}</div>
-                  <div>{w.main}</div>
-              </div>
-            )
-          })
-        }
         
-        {
-          main && <div>
-            <div>{main.temp}</div>
-            <div>{main.feels_like}</div>
-          </div>
-        }
+        {main && <div className='wCont'>
+          <h2>
+            {data.name}
+          </h2>
+          {
+            weather && weather.map((w,index)=>{
+              return(
+                <div key={index}>
+                    <div><h3>{w.main}</h3></div>
+                    <div><p>{w.description}</p></div>
+                </div>
+              )
+            })
+          }
+          
+          {
+            main && <div>
+              <h3>temp</h3>
+              <div>
+                <p> <span className='info'>{main.temp}</span> °C</p>
+              </div>
+              <h3>feels like</h3>
+              <div>
+                <p> <span className='info'>{main.feels_like}</span> °C</p>
+              </div>
+            </div>
+          }
 
-        {
-          wind && <div>
-            <div>{wind.gust ? wind.gust:wind.speed}</div>
-          </div>
-        }
+          {
+            wind && <div>
+              <h3>wind speed</h3>
+              <div>
+                <p><span className='info'>{wind.gust ? wind.gust:wind.speed}</span> m/s</p>
+              </div>
+            </div>
+          }
 
-   
+        </div>}
       </main>
 
       <footer className={styles.footer}>
